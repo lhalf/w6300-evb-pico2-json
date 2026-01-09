@@ -1,0 +1,10 @@
+[build]
+target = "thumbv8m.main-none-eabihf"
+
+[target.thumbv8m.main-none-eabihf]
+rustflags = [
+    "-C", "link-arg=--nmagic",  # don't use magic page alignment
+    "-C", "link-arg=-Tlink.x",  # use a custom linker script
+    "-C", "no-vectorize-loops", # disable LLVM loop vectorization
+    "-C", "target-cpu=cortex-m33",
+]
