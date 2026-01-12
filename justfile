@@ -1,8 +1,7 @@
 set shell := ["bash", "-euc"]
 
-build:
-    cargo build --release --features arm
-    elf2uf2-rs target/thumbv8m.main-none-eabihf/release/w6300-evb-pico2-json
+flash $DEFMT_LOG="debug":
+    cargo run --release --all-features
 
 check:
     cargo fmt --check --all

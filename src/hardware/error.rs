@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, defmt::Format)]
 pub enum Error {
     Spi,
     WiznetEthernet,

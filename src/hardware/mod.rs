@@ -21,7 +21,11 @@ pub async fn init(
 > {
     let seed = board.rng.next_u64();
 
+    defmt::debug!("setting up wiznet...");
+
     let (device, ethernet_runner) = wiznet::init(board).await?;
+
+    defmt::debug!("setting up network...");
 
     let (socket, network_runner) = network::init(device, seed).await?;
 
