@@ -11,6 +11,9 @@ use embedded_hal_bus::spi::ExclusiveDevice;
 use static_cell::StaticCell;
 use w6300_evb_pico2_json::config::MAC_ADDRESS;
 
+const RX_PACKET_QUEUE: usize = 32;
+const TX_PACKET_QUEUE: usize = 32;
+
 pub type Runner = embassy_net_wiznet::Runner<
     'static,
     W6300,
@@ -20,7 +23,7 @@ pub type Runner = embassy_net_wiznet::Runner<
 >;
 
 pub async fn init(board: Board) -> Result<(Device<'static>, Runner), Error> {
-    static STATE: StaticCell<State<32, 32>> = StaticCell::new();
+    static STATE: StaticCell<State<RX_PACKET_QUEUE, TX_PACKET_QUEUE>> = StaticCell::new();
 
     embassy_net_wiznet::new(
         MAC_ADDRESS,
