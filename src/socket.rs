@@ -1,6 +1,7 @@
 use core::result::Result;
 use embassy_net::udp::{RecvError, SendError, UdpMetadata, UdpSocket};
 
+#[cfg_attr(test, autospy::autospy)]
 #[allow(async_fn_in_trait)]
 pub trait Socket<'a> {
     async fn recv(&self, buffer: &'a mut [u8]) -> Result<(&'a [u8], UdpMetadata), RecvError>;

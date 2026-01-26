@@ -11,7 +11,7 @@ pub async fn relay<'a>(socket: &impl Socket<'a>, buffer: &'a mut [u8; 4096]) {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::udp::UdpIOSpy;
+    use crate::socket::SocketSpy;
     use core::net::Ipv4Addr;
     use embassy_net::IpEndpoint;
     use embassy_net::udp::{RecvError, UdpMetadata};
@@ -20,7 +20,7 @@ mod tests {
     async fn packet_too_large_for_buffer_causes_nothing_to_be_sent() {
         let mut buffer = [0; 4096];
 
-        let socket_spy = UdpIOSpy::default();
+        let socket_spy = SocketSpy::default();
 
         socket_spy
             .recv
@@ -36,7 +36,7 @@ mod tests {
     async fn valid_json_packets_are_echoed() {
         let mut buffer = [0; 4096];
 
-        let socket_spy = UdpIOSpy::default();
+        let socket_spy = SocketSpy::default();
 
         let metadata = UdpMetadata {
             endpoint: IpEndpoint::new(Ipv4Addr::new(0, 0, 0, 0).into(), 0),
@@ -58,7 +58,7 @@ mod tests {
     async fn invalid_json_is_not_echoed() {
         let mut buffer = [0; 4096];
 
-        let socket_spy = UdpIOSpy::default();
+        let socket_spy = SocketSpy::default();
 
         let metadata = UdpMetadata {
             endpoint: IpEndpoint::new(Ipv4Addr::new(0, 0, 0, 0).into(), 0),

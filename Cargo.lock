@@ -34,9 +34,9 @@ checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
 
 [[package]]
 name = "autospy"
-version = "1.5.0"
+version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d5158a4a94c290fe1f805c943d2b705416811c0537da519cad8b89c75672c1db"
+checksum = "4990e4836aecbe2c7111895707ecffe906e5bce82d51d7993a992c06eb5dff32"
 dependencies = [
  "autospy_macro",
  "const-default",
@@ -44,9 +44,9 @@ dependencies = [
 
 [[package]]
 name = "autospy_macro"
-version = "1.5.0"
+version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9c68b34a53892d755f9d2b8aaa6a1050aa047429d1001165daed4e3f51b10592"
+checksum = "88037c0af72654440acc6b990b55bf125e9b0add52dc6865e57e746ca484904b"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -124,9 +124,9 @@ checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 
 [[package]]
 name = "cc"
-version = "1.2.52"
+version = "1.2.54"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cd4932aefd12402b36c60956a4fe0035421f544799057659ff86f923657aada3"
+checksum = "6354c81bbfd62d9cfa9cb3c773c2b7b2a3a482d569de977fd0e961f6e7c00583"
 dependencies = [
  "find-msvc-tools",
  "shlex",
@@ -146,6 +146,15 @@ checksum = "3538270d33cc669650c4b093848450d380def10c331d38c768e34cac80576e6e"
 dependencies = [
  "termcolor",
  "unicode-width",
+]
+
+[[package]]
+name = "colored"
+version = "3.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "faf9468729b8cbcea668e36183cb69d317348c2e08e994829fb56ebfdfbaac34"
+dependencies = [
+ "windows-sys",
 ]
 
 [[package]]
@@ -356,6 +365,7 @@ checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
 [[package]]
 name = "embassy-embedded-hal"
 version = "0.5.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "embassy-futures",
  "embassy-hal-internal",
@@ -371,10 +381,12 @@ dependencies = [
 [[package]]
 name = "embassy-executor"
 version = "0.9.1"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "cordyceps",
  "cortex-m",
  "critical-section",
+ "defmt 1.0.1",
  "document-features",
  "embassy-executor-macros",
  "embassy-executor-timer-queue",
@@ -383,6 +395,7 @@ dependencies = [
 [[package]]
 name = "embassy-executor-macros"
 version = "0.7.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "darling",
  "proc-macro2",
@@ -393,17 +406,21 @@ dependencies = [
 [[package]]
 name = "embassy-executor-timer-queue"
 version = "0.1.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 
 [[package]]
 name = "embassy-futures"
 version = "0.1.2"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 
 [[package]]
 name = "embassy-hal-internal"
 version = "0.4.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "cortex-m",
  "critical-section",
+ "defmt 1.0.1",
  "num-traits",
 ]
 
@@ -428,6 +445,7 @@ dependencies = [
 [[package]]
 name = "embassy-net-driver"
 version = "0.2.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "defmt 1.0.1",
 ]
@@ -435,6 +453,7 @@ dependencies = [
 [[package]]
 name = "embassy-net-driver-channel"
 version = "0.3.2"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "defmt 1.0.1",
  "embassy-futures",
@@ -445,6 +464,7 @@ dependencies = [
 [[package]]
 name = "embassy-net-wiznet"
 version = "0.2.1"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "defmt 1.0.1",
  "embassy-futures",
@@ -457,11 +477,13 @@ dependencies = [
 [[package]]
 name = "embassy-rp"
 version = "0.9.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "cfg-if",
  "cortex-m",
  "cortex-m-rt",
  "critical-section",
+ "defmt 1.0.1",
  "document-features",
  "embassy-embedded-hal",
  "embassy-futures",
@@ -493,6 +515,7 @@ dependencies = [
 [[package]]
 name = "embassy-sync"
 version = "0.7.2"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "cfg-if",
  "critical-section",
@@ -505,6 +528,7 @@ dependencies = [
 [[package]]
 name = "embassy-time"
 version = "0.5.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "cfg-if",
  "critical-section",
@@ -520,6 +544,7 @@ dependencies = [
 [[package]]
 name = "embassy-time-driver"
 version = "0.2.1"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "document-features",
 ]
@@ -527,6 +552,7 @@ dependencies = [
 [[package]]
 name = "embassy-time-queue-utils"
 version = "0.3.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
  "embassy-executor-timer-queue",
  "heapless",
@@ -535,7 +561,9 @@ dependencies = [
 [[package]]
 name = "embassy-usb-driver"
 version = "0.2.0"
+source = "git+https://github.com/embassy-rs/embassy#1b317820f0c38a2e5eb18163a4fe4cd2959090b5"
 dependencies = [
+ "defmt 1.0.1",
  "embedded-io-async 0.7.0",
 ]
 
@@ -666,9 +694,9 @@ checksum = "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f"
 
 [[package]]
 name = "find-msvc-tools"
-version = "0.1.7"
+version = "0.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f449e6c6c08c865631d4890cfacf252b3d396c9bcc83adb6623cdb02a8336c41"
+checksum = "8591b0bcc8a98a64310a2fae1bb3e9b8564dd10e381e6e28010fde8e8e8568db"
 
 [[package]]
 name = "fixed"
@@ -1622,6 +1650,7 @@ name = "w6300-evb-pico2-json"
 version = "0.1.0"
 dependencies = [
  "autospy",
+ "colored",
  "cortex-m-rt",
  "defmt 1.0.1",
  "defmt-rtt",
@@ -1630,7 +1659,6 @@ dependencies = [
  "embassy-net-wiznet",
  "embassy-rp",
  "embassy-time",
- "embedded-hal-async",
  "embedded-hal-bus",
  "panic-probe",
  "serde",

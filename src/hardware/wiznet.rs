@@ -9,8 +9,7 @@ use embassy_rp::spi::Async;
 use embassy_time::Delay;
 use embedded_hal_bus::spi::ExclusiveDevice;
 use static_cell::StaticCell;
-
-const MAC_ADDRESS: [u8; 6] = [0x02, 0x00, 0x00, 0x00, 0x00, 0x00];
+use w6300_evb_pico2_json::config::MAC_ADDRESS;
 
 pub type Runner = embassy_net_wiznet::Runner<
     'static,
@@ -21,7 +20,7 @@ pub type Runner = embassy_net_wiznet::Runner<
 >;
 
 pub async fn init(board: Board) -> Result<(Device<'static>, Runner), Error> {
-    static STATE: StaticCell<State<8, 8>> = StaticCell::new();
+    static STATE: StaticCell<State<32, 32>> = StaticCell::new();
 
     embassy_net_wiznet::new(
         MAC_ADDRESS,

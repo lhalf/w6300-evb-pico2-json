@@ -4,6 +4,11 @@ use embassy_net::{Ipv4Cidr, Stack, StackResources, StaticConfigV4};
 use static_cell::StaticCell;
 use w6300_evb_pico2_json::config::{GATEWAY, IP_ADDRESS, IP_ADDRESS_PREFIX, PORT};
 
+const SOCKETS: usize = 1;
+const RX_BUFFER_SIZE: usize = 64 * 1024;
+const TX_BUFFER_SIZE: usize = 64 * 1024;
+const META_SIZE: usize = 256;
+
 pub async fn init(
     device: embassy_net_wiznet::Device<'static>,
     seed: u64,
@@ -14,7 +19,7 @@ pub async fn init(
     ),
     Error,
 > {
-    static RESOURCES: StaticCell<StackResources<3>> = StaticCell::new();
+    static RESOURCES: StaticCell<StackResources<SOCKETS>> = StaticCell::new();
 
     let config = embassy_net::Config::ipv4_static(StaticConfigV4 {
         address: Ipv4Cidr::new(IP_ADDRESS, IP_ADDRESS_PREFIX),
@@ -29,10 +34,6 @@ pub async fn init(
 }
 
 fn setup_socket(stack: Stack<'static>) -> Result<UdpSocket<'static>, Error> {
-    const RX_BUFFER_SIZE: usize = 64 * 1024;
-    const TX_BUFFER_SIZE: usize = 32 * 1024;
-    const META_SIZE: usize = 256;
-
     static RX_BUF: StaticCell<[u8; RX_BUFFER_SIZE]> = StaticCell::new();
     static TX_BUF: StaticCell<[u8; TX_BUFFER_SIZE]> = StaticCell::new();
     static RX_META: StaticCell<[PacketMetadata; META_SIZE]> = StaticCell::new();
