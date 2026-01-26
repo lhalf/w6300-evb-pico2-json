@@ -13,7 +13,7 @@ bind_interrupts!(struct Irqs {
     PIO0_IRQ_0 => InterruptHandler<PIO0>;
 });
 
-const SPI_FREQUENCY: u32 = 27_500_000;
+const SPI_FREQUENCY: u32 = 15_000_000;
 
 pub struct Board {
     pub spi: Spi<'static, PIO0, 0, embassy_rp::spi::Async>,
